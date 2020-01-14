@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         var toDoRepository: ToDoRepository =
             RemoteToDoRepositoryImpl(
                 object : Webservice {
-                    override fun getTodo(todoId: Int): TodoModel {
+                    override suspend fun getTodo(todoId: Int): TodoModel {
                         var todo: TodoModel?
                         var call: Call<TodoModel> =
                             RetrofitFactory.makeRetrofitService().getTodo(todoId);

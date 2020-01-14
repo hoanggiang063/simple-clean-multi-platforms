@@ -4,6 +4,7 @@ import Alamofire
 import SwiftyJSON
 
 class ViewController: UIViewController, BasePresentCallBack, Webservice, Log {
+     
     func log(error: KotlinThrowable) {
         print(error)
     }
@@ -11,9 +12,10 @@ class ViewController: UIViewController, BasePresentCallBack, Webservice, Log {
     func getTodo(todoId: Int32) -> TodoModel {
         var toDo: TodoModel = TodoModel.init(id: 3, title: "Fail", completed: false)
         let request = AF.request("https://jsonplaceholder.typicode.com/todos/1")
+        let semaphore = DispatchSemaphore(value: 0)
         request
              .validate(statusCode: 200...302)
-             .responseJSON{ response in
+             .responseJSON(queue: DispatchQueue.global(qos: .default)){ response in
                 print(response)
                 //to get status code
                 if let status = response.response?.statusCode {
@@ -35,11 +37,12 @@ class ViewController: UIViewController, BasePresentCallBack, Webservice, Log {
                         completed: (json?["completed"].boolValue)!)
                     print("check todo")
                     print(toDo)
-                }catch{
+                } catch{
                     print("parse to do error")
                     }
+                semaphore.signal()
                 }
-        
+        _ = semaphore.wait(timeout:DispatchTime.distantFuture)
         return toDo;
     }
     
@@ -56,7 +59,7 @@ class ViewController: UIViewController, BasePresentCallBack, Webservice, Log {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         print("begin project")
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 300, height: 21))
         label.center = CGPoint(x: 160, y: 285)
         label.textAlignment = .center
@@ -69,6 +72,8 @@ class ViewController: UIViewController, BasePresentCallBack, Webservice, Log {
         todoUseCase.buildUseCase(param: 1)
         todoUseCase.execute(callback: self)
     }
+    
+    
 }
 
 
