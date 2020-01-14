@@ -22,7 +22,7 @@ open class BaseExceptionMapperImpl : ExceptionMapper {
             is IOException -> TechnicalException()
 
             is HttpException -> {
-                var exception = input as HttpException
+                var exception = input
                 filterException(exception)
             }
             else -> UnknownException()

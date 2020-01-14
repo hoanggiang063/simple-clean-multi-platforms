@@ -5,6 +5,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class TodoModel(
+
+    @SerialName("userId")
+    val userId: Int = 0,
     @SerialName("id")
     val id: Int = 0,
     @SerialName("title")

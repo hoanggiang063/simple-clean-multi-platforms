@@ -11,8 +11,6 @@
 		047FF1FD23C691FC0018CD9E /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48FC9FF523BE020400E14FCA /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		047FF1FF23C692040018CD9E /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04295AF323C54D0900772C0C /* SwiftyJSON.framework */; };
 		047FF20023C692040018CD9E /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04295AF323C54D0900772C0C /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		047FF20123C692500018CD9E /* SharedCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47729E6D22F4806B00B9B36B /* SharedCode.framework */; };
-		047FF20223C692500018CD9E /* SharedCode.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 47729E6D22F4806B00B9B36B /* SharedCode.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		47729E0622F447C800B9B36B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47729E0522F447C800B9B36B /* AppDelegate.swift */; };
 		47729E0822F447C800B9B36B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47729E0722F447C800B9B36B /* ViewController.swift */; };
 		47729E0B22F447C800B9B36B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47729E0922F447C800B9B36B /* Main.storyboard */; };
@@ -20,6 +18,8 @@
 		47729E1022F447CA00B9B36B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47729E0E22F447CA00B9B36B /* LaunchScreen.storyboard */; };
 		47729E1B22F447CA00B9B36B /* KotlinIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47729E1A22F447CA00B9B36B /* KotlinIOSTests.swift */; };
 		47729E2622F447CA00B9B36B /* KotlinIOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47729E2522F447CA00B9B36B /* KotlinIOSUITests.swift */; };
+		482B856E23CDDCF900FB49E9 /* SharedCode.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47729E6D22F4806B00B9B36B /* SharedCode.framework */; };
+		482B856F23CDDCF900FB49E9 /* SharedCode.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 47729E6D22F4806B00B9B36B /* SharedCode.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,7 +152,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				047FF20023C692040018CD9E /* SwiftyJSON.framework in Embed Frameworks */,
-				047FF20223C692500018CD9E /* SharedCode.framework in Embed Frameworks */,
+				482B856F23CDDCF900FB49E9 /* SharedCode.framework in Embed Frameworks */,
 				047FF1FD23C691FC0018CD9E /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -186,7 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				047FF1FF23C692040018CD9E /* SwiftyJSON.framework in Frameworks */,
-				047FF20123C692500018CD9E /* SharedCode.framework in Frameworks */,
+				482B856E23CDDCF900FB49E9 /* SharedCode.framework in Frameworks */,
 				047FF1FC23C691FC0018CD9E /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

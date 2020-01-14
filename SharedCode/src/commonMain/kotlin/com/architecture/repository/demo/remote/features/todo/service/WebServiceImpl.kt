@@ -14,7 +14,7 @@ import kotlinx.serialization.json.Json
 
 @Suppress("EXPERIMENTAL_API_USAGE")
 class WebServiceImpl(clientEngine: HttpClientEngine) : Webservice {
-    val BASE_URL = "https://jsonplaceholder.typicode.com/"
+    val BASE_URL = "jsonplaceholder.typicode.com"
 
     private val client = HttpClient(clientEngine) {
         install(JsonFeature) {

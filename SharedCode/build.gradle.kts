@@ -1,14 +1,8 @@
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 plugins {
     kotlin("multiplatform")
-   // id("kotlinx-serialization")
+    id("kotlinx-serialization") version "1.3.40"
 }
-
-repositories {
-    jcenter()
-    maven("https://kotlin.bintray.com/kotlinx")
-}
-
 
 
 kotlin {
@@ -37,7 +31,7 @@ kotlin {
         // HTTP
         implementation ("io.ktor:ktor-client-core:1.3.0-rc2")
         implementation ("io.ktor:ktor-client-json:1.3.0-rc2")
-        implementation ("io.ktor:ktor-client-serialization:0.11.0")
+        implementation ("io.ktor:ktor-client-serialization:1.3.0-rc2")
         // Date & Time
         implementation ("com.soywiz:klock-metadata:1.4.0")
 
@@ -55,13 +49,14 @@ kotlin {
         implementation ("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.14.0")
 
         // HTTP
+        implementation ("io.ktor:ktor-client-core:1.3.0-rc2")
         implementation ("io.ktor:ktor-client-android:1.3.0-rc2")
         implementation ("io.ktor:ktor-client-json-jvm:1.3.0-rc2")
         implementation ("io.ktor:ktor-client-serialization-jvm:1.3.0-rc2")
         implementation ("io.ktor:ktor-client-okhttp:1.3.0-rc2")
         implementation ("com.squareup.okhttp3:logging-interceptor:4.0.0")
         // Date & Time
-        implementation ("com.soywiz:klock-android:1.4.0")
+    //    implementation ("com.soywiz:klock-android:1.4.0")
 
     }
 
@@ -73,10 +68,10 @@ kotlin {
         // HTTP
         implementation ("io.ktor:ktor-client-ios:1.3.0-rc2")
         implementation ("io.ktor:ktor-client-json-native:1.3.0-rc2")
-        implementation ("io.ktor:ktor-client-serialization-iosx64:0.14.0")
+        implementation ("io.ktor:ktor-client-serialization-iosx64:1.3.0-rc2")
 
         // Date & Time
-        implementation ("com.soywiz:klock-iosx64:1.4.0")
+     //   implementation ("com.soywiz:klock-iosx64:1.5.0")
 
 
     }

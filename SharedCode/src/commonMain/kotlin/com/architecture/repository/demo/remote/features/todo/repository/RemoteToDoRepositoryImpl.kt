@@ -18,7 +18,7 @@ class RemoteToDoRepositoryImpl(
         this.myParam = param;
     }
 
-    override fun invoke(): ToDoInfo {
+    override suspend fun invoke(): ToDoInfo {
         try {
             return RemoteTodoMapper().transform(service.getTodo(myParam))
         } catch (error: Throwable) {
