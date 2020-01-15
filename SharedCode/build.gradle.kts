@@ -55,8 +55,7 @@ kotlin {
         implementation ("io.ktor:ktor-client-serialization-jvm:1.3.0-rc2")
         implementation ("io.ktor:ktor-client-okhttp:1.3.0-rc2")
         implementation ("com.squareup.okhttp3:logging-interceptor:4.0.0")
-        // Date & Time
-    //    implementation ("com.soywiz:klock-android:1.4.0")
+
 
     }
 
@@ -69,10 +68,6 @@ kotlin {
         implementation ("io.ktor:ktor-client-ios:1.3.0-rc2")
         implementation ("io.ktor:ktor-client-json-native:1.3.0-rc2")
         implementation ("io.ktor:ktor-client-serialization-iosx64:1.3.0-rc2")
-
-        // Date & Time
-     //   implementation ("com.soywiz:klock-iosx64:1.5.0")
-
 
     }
 }
