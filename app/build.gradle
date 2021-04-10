@@ -1,72 +1,128 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.1"
-    defaultConfig {
-        applicationId "com.jetbrains.handson.mpp.mobile"
-        minSdkVersion 15
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
+    compileSdkVersion rootProject.compileSdkVersion
+
+    signingConfigs {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            keyAlias 'android'
+            keyPassword 'android'
+            storeFile file("../sample.keystore")
+            storePassword 'android'
+        }
+        release {
+            keyAlias 'android'
+            keyPassword 'android'
+            storeFile file("../sample.keystore")
+            storePassword 'android'
         }
     }
 
-    packagingOptions {
+    defaultConfig {
+        applicationId "com.architecture.cleanmvvm"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        signingConfig signingConfigs.debug
+
+        testInstrumentationRunner "com.architecture.cleanmvvm.bootstrap.KoinTestRunner"
+    }
+    buildTypes {
+
+        debug {
+            minifyEnabled false
+            // signingConfig signingConfigs.debug
+        }
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+        packagingOptions {
         // Ktor prevents the build otherwise
         exclude 'META-INF/*.kotlin_module'
     }
 
-    compileOptions {
-        targetCompatibility = "8"
-        sourceCompatibility = "8"
+    def dimenDefault = "dimenDefault"
+    productFlavors {
+        flavorDimensions dimenDefault
+
+        sit {
+            dimension = dimenDefault
+        }
+        pro {
+            dimension = dimenDefault
+        }
+    }
+
+    sourceSets {
+        main {
+            res.srcDirs = [
+                    'src/main/res-screens/common',
+                    'src/main/res-screens/weather',
+            ]
+        }
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    testOptions {
+        animationsDisabled = true
     }
 }
 
 dependencies {
-    implementation project(':SharedCode')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
+    implementation project(':SharedCode')
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.61"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3'
-    implementation "org.jetbrains.anko:anko:0.10.4"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "androidx.core:core-ktx:$coreKtxVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.recyclerview:recyclerview:$recyclerviewVersion"
 
-    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.0.0'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutinesVersion"
+    implementation "org.jetbrains.anko:anko:$ankoVersion"
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3'
-    implementation "org.jetbrains.anko:anko:0.10.4"
+    // KOIN
+    implementation "org.koin:koin-android:$koinVersion"
+    implementation "org.koin:koin-android-viewmodel:$koinVersion"
 
-    // HTTP
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+
+    implementation "com.jaredrummler:android-shell:$androidShellVersion"
+
+        // HTTP
     implementation ("io.ktor:ktor-client-core:1.3.0-rc2")
     implementation ("io.ktor:ktor-client-android:1.3.0-rc2")
     implementation ("io.ktor:ktor-client-json-jvm:1.3.0-rc2")
     implementation ("io.ktor:ktor-client-serialization-jvm:1.3.0-rc2")
     implementation ("io.ktor:ktor-client-okhttp:1.3.0-rc2")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.0.0")
 
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlinTestJunitVersion"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion"
+    testImplementation "androidx.test:rules:$testRulesVersion"
+    testImplementation "org.assertj:assertj-core:$assertjVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoCoreVersion"
+    testImplementation "com.android.support.test:testing-support-lib:$testingSupportLibVersion"
+    testImplementation "androidx.arch.core:core-testing:$archCoreTestingVersion"
+    testImplementation "org.mockito:mockito-android:$mockitoAndroid"
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation "androidx.test:runner:$androidRunnerVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "androidx.test:rules:$testRulesVersion"
+    androidTestImplementation "io.mockk:mockk-android:$mockkAndroidVersion"
 }

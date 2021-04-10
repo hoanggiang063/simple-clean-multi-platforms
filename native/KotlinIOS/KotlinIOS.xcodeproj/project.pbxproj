@@ -601,7 +601,7 @@
 				47729E2922F447CA00B9B36B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		47729E2A22F447CA00B9B36B /* Build configuration list for PBXNativeTarget "KotlinIOS" */ = {
 			isa = XCConfigurationList;
@@ -610,7 +610,7 @@
 				47729E2C22F447CA00B9B36B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		47729E2D22F447CA00B9B36B /* Build configuration list for PBXNativeTarget "KotlinIOSTests" */ = {
 			isa = XCConfigurationList;
@@ -619,7 +619,7 @@
 				47729E2F22F447CA00B9B36B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		47729E3022F447CA00B9B36B /* Build configuration list for PBXNativeTarget "KotlinIOSUITests" */ = {
 			isa = XCConfigurationList;
@@ -628,7 +628,7 @@
 				47729E3222F447CA00B9B36B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
