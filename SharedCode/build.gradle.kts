@@ -44,7 +44,7 @@ kotlin {
         implementation ("com.squareup.retrofit2:retrofit:2.6.0")
         implementation ("com.squareup.okhttp3:logging-interceptor:4.0.0")
          // Coroutines
-        implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3")
+        implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.8")
 
         implementation ("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.14.0")
 

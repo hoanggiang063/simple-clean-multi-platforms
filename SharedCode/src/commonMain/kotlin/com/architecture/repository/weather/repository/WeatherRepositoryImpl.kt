@@ -5,17 +5,16 @@ import com.architecture.business.weather.info.WeatherItemInfo
 import com.architecture.business.weather.repository.WeatherRepository
 import com.architecture.business.weather.usecase.WeatherRequest
 import com.architecture.repository.core.mapper.ExceptionMapper
-import com.architecture.repository.demo.repository.Log
-import com.architecture.repository.demo.service.Webservice
 import com.architecture.repository.weather.model.ForeCast
 import com.architecture.repository.weather.model.Weather
 import com.architecture.repository.weather.model.WeatherModel
-import com.architecture.repository.weather.service.WeatherRemoteService
+import com.architecture.repository.weather.service.WeatherService
+import com.jetbrains.handson.mpp.mobile.com.architecture.repository.core.log.Logger
 
 class WeatherRemoteImpl(
-    var service: WeatherRemoteService,
+    var service: WeatherService,
     var exception: ExceptionMapper,
-    var log: Log
+    var log: Logger
 ) : WeatherRepository {
 
     lateinit var request: WeatherRequest

@@ -1,15 +1,16 @@
-package com.architecture.repository.demo.repository
+package com.architecture.repository.demo.remote.features.todo.repository
 
 import com.architecture.business.demo.info.ToDoInfo
 import com.architecture.business.demo.repository.ToDoRepository
 import com.architecture.repository.core.mapper.ExceptionMapper
 import com.architecture.repository.demo.mapper.RemoteTodoMapper
 import com.architecture.repository.demo.service.Webservice
+import com.jetbrains.handson.mpp.mobile.com.architecture.repository.core.log.Logger
 
 class RemoteToDoRepositoryImpl(
     var service: Webservice,
     var exception: ExceptionMapper,
-    var log: Log
+    var log: Logger
 ) :
     ToDoRepository {
 
@@ -28,6 +29,3 @@ class RemoteToDoRepositoryImpl(
     }
 }
 
-interface Log {
-    fun log(error: Throwable)
-}

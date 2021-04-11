@@ -46,14 +46,6 @@ class WeatherViewModel(val weatherUseCase: WeatherUseCase, val envConfiguration:
                     _failedException.value = throwable
                 }
 
-//                override fun onFailByTechnical(exception: TechnicalException) {
-//                    _failedByTechnical.value = exception
-//                }
-//
-//                override fun onDefaultFail(throwable: Throwable) {
-//                    _failedException.value = throwable
-//                }
-
             })
     }
 }

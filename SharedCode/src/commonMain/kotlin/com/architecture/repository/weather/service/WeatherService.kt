@@ -12,7 +12,7 @@ import com.architecture.repository.weather.model.WeatherModel
 //    ): WeatherModel
 //}
 
-interface WeatherRemoteService {
+interface WeatherService {
     suspend fun getWeather(
         city: String,
         numberOfDate: String,

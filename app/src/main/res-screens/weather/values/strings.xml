@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Weather Forecast</string>
+    <string name="app_name">Demo Weather Forecast</string>
     <string name="btnGetWeather">Get Weather</string>
     <string name="searchViewHint">Search for City</string>
 
