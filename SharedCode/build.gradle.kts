@@ -24,8 +24,8 @@ kotlin {
     jvm("android")
 
     sourceSets["commonMain"].dependencies {
-        implementation("org.jetbrains.kotlin:kotlin-stdlib-common")
-        api ("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.3")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-common:1.4.21")
+        api ("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.8")
         implementation ("org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:0.14.0")
 
         // HTTP
@@ -39,7 +39,7 @@ kotlin {
     }
 
     sourceSets["androidMain"].dependencies {
-        implementation("org.jetbrains.kotlin:kotlin-stdlib")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.4.21")
         implementation ("com.squareup.retrofit2:converter-gson:2.6.0")
         implementation ("com.squareup.retrofit2:retrofit:2.6.0")
         implementation ("com.squareup.okhttp3:logging-interceptor:4.0.0")
@@ -60,7 +60,7 @@ kotlin {
     }
 
     sourceSets["iosMain"].dependencies {
-        implementation("org.jetbrains.kotlin:kotlin-stdlib")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.4.21")
         // Coroutines
         implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:1.3.3")
 
