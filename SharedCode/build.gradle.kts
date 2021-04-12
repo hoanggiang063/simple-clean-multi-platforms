@@ -25,9 +25,9 @@ kotlin {
 
     sourceSets["commonMain"].dependencies {
         implementation("org.jetbrains.kotlin:kotlin-stdlib-common:1.4.32")
-        api ("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.8")
+        //api ("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.8")
         implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0")
-
+        implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3")
         // HTTP
         implementation ("io.ktor:ktor-client-core:1.5.3")
         implementation ("io.ktor:ktor-client-json:1.5.3")
@@ -42,7 +42,7 @@ kotlin {
         implementation("org.jetbrains.kotlin:kotlin-stdlib:1.4.32")
         implementation ("com.squareup.okhttp3:logging-interceptor:4.4.1")
          // Coroutines
-        implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.8")
+        implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3")
 
         // HTTP
         implementation ("io.ktor:ktor-client-core:1.5.3")

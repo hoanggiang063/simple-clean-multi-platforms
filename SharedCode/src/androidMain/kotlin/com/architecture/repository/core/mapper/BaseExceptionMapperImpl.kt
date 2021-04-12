@@ -1,14 +1,9 @@
 package com.architecture.repository.core.mapper
 
 import com.architecture.business.core.exception.BaseException
-import com.architecture.business.core.exception.BusinessException
 import com.architecture.business.core.exception.TechnicalException
 import com.architecture.business.core.exception.UnknownException
-import com.architecture.repository.core.model.ErrorModel
-import okhttp3.ResponseBody
-import java.io.BufferedReader
 import java.io.IOException
-import java.io.InputStreamReader
 
 
 open class BaseExceptionMapperImpl : ExceptionMapper {

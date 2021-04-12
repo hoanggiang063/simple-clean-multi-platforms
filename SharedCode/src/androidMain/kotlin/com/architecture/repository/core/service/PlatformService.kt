@@ -1,7 +1,7 @@
 package com.jetbrains.handson.mpp.mobile.com.architecture.repository.core.service
 
-import io.ktor.client.engine.HttpClientEngine
-import io.ktor.client.engine.okhttp.OkHttp
+import io.ktor.client.engine.*
+import io.ktor.client.engine.okhttp.*
 import okhttp3.logging.HttpLoggingInterceptor
 
 actual object PlatformService {

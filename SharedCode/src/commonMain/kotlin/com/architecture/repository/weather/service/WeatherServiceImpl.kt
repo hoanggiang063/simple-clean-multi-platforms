@@ -1,14 +1,12 @@
 package com.architecture.repository.weather.service
 
 import com.architecture.repository.weather.model.WeatherModel
-import io.ktor.client.HttpClient
-import io.ktor.client.engine.HttpClientEngine
-import io.ktor.client.features.json.JsonFeature
-import io.ktor.client.features.json.defaultSerializer
-import io.ktor.client.request.get
-import io.ktor.client.statement.HttpStatement
-import io.ktor.client.statement.readText
-import io.ktor.http.URLProtocol
+import io.ktor.client.*
+import io.ktor.client.engine.*
+import io.ktor.client.features.json.*
+import io.ktor.client.request.*
+import io.ktor.client.statement.*
+import io.ktor.http.*
 import kotlinx.serialization.json.Json
 
 @Suppress("EXPERIMENTAL_API_USAGE")
@@ -31,9 +29,14 @@ class WeatherServiceImpl(val baseURL: String, clientEngine: HttpClientEngine) : 
                 protocol = URLProtocol.HTTPS
                 host = baseURL
                 encodedPath = "/data/2.5/forecast/daily"
+                parameters.append("q", city)
+                parameters.append("cnt", numberOfDate)
+                parameters.append("appid", appId)
+                parameters.append("units", unit)
             }
         }
         val jsonBody = response.execute()
-        return Json.decodeFromString(WeatherModel.serializer(), jsonBody.readText())
+        val format = Json { ignoreUnknownKeys = true ; isLenient = true }
+        return format.decodeFromString<WeatherModel>(WeatherModel.serializer(), jsonBody.readText())
     }
 }

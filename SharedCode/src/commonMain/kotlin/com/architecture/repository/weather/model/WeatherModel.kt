@@ -29,7 +29,7 @@ data class City(
     @SerialName("population")
     var population: Int = 0,
 
-    @SerialName("timeZone")
+    @SerialName("timezone")
     var timeZone: String
 )
 
