@@ -34,6 +34,6 @@ class WeatherServiceImpl(val baseURL: String, clientEngine: HttpClientEngine) : 
             }
         }
         val jsonBody = response.execute()
-        return Json.parse(WeatherModel.serializer(), jsonBody.readText())
+        return Json.decodeFromString(WeatherModel.serializer(), jsonBody.readText())
     }
 }

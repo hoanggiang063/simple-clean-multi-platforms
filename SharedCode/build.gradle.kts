@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 plugins {
     kotlin("multiplatform")
-    id("kotlinx-serialization") version "1.3.40"
+    kotlin("plugin.serialization") version "1.4.30"
 }
 
 
@@ -24,14 +24,14 @@ kotlin {
     jvm("android")
 
     sourceSets["commonMain"].dependencies {
-        implementation("org.jetbrains.kotlin:kotlin-stdlib-common:1.4.21")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-common:1.4.32")
         api ("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.8")
-        implementation ("org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:0.14.0")
+        implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.1.0")
 
         // HTTP
-        implementation ("io.ktor:ktor-client-core:1.3.0-rc2")
-        implementation ("io.ktor:ktor-client-json:1.3.0-rc2")
-        implementation ("io.ktor:ktor-client-serialization:1.3.0-rc2")
+        implementation ("io.ktor:ktor-client-core:1.5.3")
+        implementation ("io.ktor:ktor-client-json:1.5.3")
+        implementation ("io.ktor:ktor-client-serialization:1.5.3")
         // Date & Time
         implementation ("com.soywiz:klock-metadata:1.4.0")
 
@@ -39,35 +39,30 @@ kotlin {
     }
 
     sourceSets["androidMain"].dependencies {
-        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.4.21")
-        implementation ("com.squareup.retrofit2:converter-gson:2.6.0")
-        implementation ("com.squareup.retrofit2:retrofit:2.6.0")
-        implementation ("com.squareup.okhttp3:logging-interceptor:4.0.0")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.4.32")
+        implementation ("com.squareup.okhttp3:logging-interceptor:4.4.1")
          // Coroutines
         implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.8")
 
-        implementation ("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.14.0")
-
         // HTTP
-        implementation ("io.ktor:ktor-client-core:1.3.0-rc2")
-        implementation ("io.ktor:ktor-client-android:1.3.0-rc2")
-        implementation ("io.ktor:ktor-client-json-jvm:1.3.0-rc2")
-        implementation ("io.ktor:ktor-client-serialization-jvm:1.3.0-rc2")
-        implementation ("io.ktor:ktor-client-okhttp:1.3.0-rc2")
-        implementation ("com.squareup.okhttp3:logging-interceptor:4.0.0")
+        implementation ("io.ktor:ktor-client-core:1.5.3")
+        implementation ("io.ktor:ktor-client-android:1.5.3")
+        implementation ("io.ktor:ktor-client-json-jvm:1.5.3")
+        implementation ("io.ktor:ktor-client-serialization-jvm:1.5.3")
+        implementation ("io.ktor:ktor-client-okhttp:1.5.3")
 
 
     }
 
     sourceSets["iosMain"].dependencies {
-        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.4.21")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib:1.4.32")
         // Coroutines
-        implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:1.3.3")
+        implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:1.3.8")
 
         // HTTP
-        implementation ("io.ktor:ktor-client-ios:1.3.0-rc2")
-        implementation ("io.ktor:ktor-client-json-native:1.3.0-rc2")
-        implementation ("io.ktor:ktor-client-serialization-iosx64:1.3.0-rc2")
+        implementation ("io.ktor:ktor-client-ios:1.5.3")
+        implementation ("io.ktor:ktor-client-json-native:1.3.2")
+        implementation ("io.ktor:ktor-client-serialization-iosx64:1.5.3")
 
     }
 }

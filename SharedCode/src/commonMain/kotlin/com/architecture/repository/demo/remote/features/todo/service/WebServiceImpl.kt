@@ -10,6 +10,7 @@ import io.ktor.client.request.get
 import io.ktor.client.statement.HttpStatement
 import io.ktor.client.statement.readText
 import io.ktor.http.URLProtocol
+import kotlinx.serialization.DeserializationStrategy
 import kotlinx.serialization.json.Json
 
 @Suppress("EXPERIMENTAL_API_USAGE")
@@ -32,6 +33,6 @@ class WebServiceImpl(clientEngine: HttpClientEngine) : Webservice {
             }
         }
         val jsonBody = response.execute()
-        return Json.parse(TodoModel.serializer(), jsonBody.readText())
+        return Json.decodeFromString(TodoModel.serializer(),jsonBody.readText())
     }
 }

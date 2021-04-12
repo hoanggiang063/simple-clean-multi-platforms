@@ -20,15 +20,8 @@ private object IosMainDispatcher : CoroutineDispatcher() {
         dispatch_async(dispatch_get_main_queue()) { block.run() }
     }
 }
-
-private object IosDefaultDispatcher : CoroutineDispatcher() {
-
-    @ExperimentalUnsignedTypes
-    override fun dispatch(context: CoroutineContext, block: Runnable) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            block.freeze().run()
-        }
-    }
-}
+/*
+* io.ktor:ktor-client-json-native
+* */
 
 //To change initializer of created properties use File | Settings | File Templates.
