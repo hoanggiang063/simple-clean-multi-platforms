@@ -34,7 +34,6 @@ kotlin {
         // Date & Time
         implementation ("com.soywiz:klock-metadata:1.4.0")
 
-
     }
 
     sourceSets["androidMain"].dependencies {
@@ -52,6 +51,48 @@ kotlin {
     sourceSets["iosMain"].dependencies {
         // HTTP
         implementation ("io.ktor:ktor-client-ios:1.5.3")
+    }
+
+    sourceSets{
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test-common"))
+                implementation(kotlin("test-annotations-common"))
+                implementation ("org.jetbrains.kotlin:kotlin-test-common:1.4.30")
+                implementation ("org.jetbrains.kotlin:kotlin-test-annotations-common:1.4.30")
+                implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2-native-mt")
+                api ("io.ktor:ktor-client-mock:1.5.3")
+            }
+        }
+        val androidTest by getting {
+            dependencies {
+                implementation ("junit:junit:4.12")
+                implementation ("org.jetbrains.kotlin:kotlin-test")
+                implementation ("org.jetbrains.kotlin:kotlin-test-junit")
+
+                api ("io.ktor:ktor-client-mock-jvm:1.5.3")
+                api ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2-native-mt")
+
+                // specific for android only
+                implementation ("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
+                implementation ("org.assertj:assertj-core:3.16.1")
+                implementation ("org.mockito:mockito-core:3.3.3")
+                implementation ("com.android.support.test:testing-support-lib:0.1")
+                implementation ("androidx.arch.core:core-testing:2.1.0")
+                implementation ("org.mockito:mockito-android:2.24.5")
+                implementation ("android.arch.core:core-testing:1.1.1")
+                implementation ("com.google.code.gson:gson:2.8.6")
+            }
+        }
+
+        val iosTest by getting {
+            dependencies {
+                implementation ("io.ktor:ktor-client-ios:1.5.3")
+                implementation ("io.ktor:ktor-client-core-native:1.5.3")
+                implementation ("io.ktor:ktor-client-json-native:1.5.3")
+            }
+        }
+
     }
 }
 

@@ -11,6 +11,8 @@ import kotlinx.coroutines.withContext
 
 abstract class BaseUsecaseImpl<Param, Result, CallBack : BasePresentCallBack<Result>>
     (val bankRepository: BaseRepository<Param, Result>) : BaseUseCase<Param, Result, CallBack> {
+    var subscriberContextUseCase = subscriberContext
+    var observerContextUseCase = observerContext
 
     override fun buildUseCase(param: Param): BaseUsecaseImpl<Param, Result, CallBack> {
         bankRepository.setParam(param)
@@ -18,17 +20,17 @@ abstract class BaseUsecaseImpl<Param, Result, CallBack : BasePresentCallBack<Res
     }
 
     override fun invoke(callback: CallBack): Job {
-        return CoroutineScope(subscriberContext).launch {
+        return CoroutineScope(subscriberContextUseCase).launch {
             // implement thread to call
             var data: Result?
 
             try {
                 data = bankRepository()
-                withContext(observerContext) {
+                withContext(observerContextUseCase) {
                     handleSuccess(data, callback)
                 }
             } catch (error: Throwable) {
-                withContext(observerContext) {
+                withContext(observerContextUseCase) {
                     handleFail(error, callback)
                 }
 
