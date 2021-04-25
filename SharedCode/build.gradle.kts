@@ -58,9 +58,9 @@ kotlin {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
-                implementation ("org.jetbrains.kotlin:kotlin-test-common:1.4.30")
-                implementation ("org.jetbrains.kotlin:kotlin-test-annotations-common:1.4.30")
-                implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2-native-mt")
+                api ("org.jetbrains.kotlin:kotlin-test-common:1.4.30")
+                api ("org.jetbrains.kotlin:kotlin-test-annotations-common:1.4.30")
+                api ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2-native-mt")
                 api ("io.ktor:ktor-client-mock:1.5.3")
             }
         }
@@ -87,9 +87,7 @@ kotlin {
 
         val iosTest by getting {
             dependencies {
-                implementation ("io.ktor:ktor-client-ios:1.5.3")
-                implementation ("io.ktor:ktor-client-core-native:1.5.3")
-                implementation ("io.ktor:ktor-client-json-native:1.5.3")
+             // no need
             }
         }
 

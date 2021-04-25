@@ -71,7 +71,7 @@ class WeatherUseCaseImplTest {
     }
 
     @Test
-    fun shouldReturnCityNotFoundWhenRepoReturnReturnFailTechnical() = runBlocking {
+    fun shouldReturnCityNotFoundWhenRepoReturnReturnBusinessException() = runBlocking {
         doAnswer {
             throw BusinessException()
         }.`when`(weatherRepository).invoke()

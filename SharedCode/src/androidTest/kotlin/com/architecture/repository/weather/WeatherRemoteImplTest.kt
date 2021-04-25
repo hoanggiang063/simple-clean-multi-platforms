@@ -80,19 +80,7 @@ class WeatherRemoteImplTest {
 
     @Test
     @Throws(Throwable::class)
-    fun shouldThrowFailWhenApiReturnHttpException() {
-        expectedException.expect(TechnicalException::class.java)
-        runBlocking {
-            doAnswer {
-                throw IOException()
-            }.`when`(service).getWeather(any(), any(), any(), any())
-            repository.invoke()
-        }
-    }
-
-    @Test
-    @Throws(Throwable::class)
-    fun shouldThrowFailWhenApiReturnBusinessException() {
+    fun shouldThrowFailWhenApiReturnOtherException() {
         expectedException.expect(UnknownException::class.java)
         runBlocking {
             doAnswer {
