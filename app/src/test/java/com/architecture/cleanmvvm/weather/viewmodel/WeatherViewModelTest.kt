@@ -6,14 +6,13 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.Observer
 import com.architecture.business.core.exception.BusinessException
-import com.architecture.business.core.exception.TechnicalException
 import com.architecture.business.core.exception.UnknownException
 import com.architecture.business.core.usecase.BaseUseCase
+import com.architecture.business.weather.callback.WeatherCallBack
+import com.architecture.business.weather.info.WeatherInfo
+import com.architecture.business.weather.usecase.WeatherRequest
+import com.architecture.business.weather.usecase.WeatherUseCase
 import com.architecture.cleanmvvm.core.configuration.EnvConfiguration
-import com.architecture.cleanmvvm.node1.demo.callback.WeatherCallBack
-import com.architecture.cleanmvvm.node1.demo.info.WeatherInfo
-import com.architecture.cleanmvvm.node1.demo.usecase.WeatherRequest
-import com.architecture.cleanmvvm.node1.demo.usecase.WeatherUseCase
 import com.nhaarman.mockitokotlin2.verify
 import kotlinx.coroutines.Job
 import org.junit.Before
@@ -59,6 +58,11 @@ class WeatherViewModelTest {
             override fun buildUseCase(param: WeatherRequest):
                     BaseUseCase<WeatherRequest, WeatherInfo, WeatherCallBack<WeatherInfo>> = this
 
+            override fun execute(callback: WeatherCallBack<WeatherInfo>): Job {
+                callback.onSuccess(WeatherInfo())
+                return Job()
+            }
+
             override fun invoke(callback: WeatherCallBack<WeatherInfo>): Job {
                 callback.onSuccess(WeatherInfo())
                 return Job()
@@ -78,8 +82,13 @@ class WeatherViewModelTest {
             override fun buildUseCase(param: WeatherRequest):
                     BaseUseCase<WeatherRequest, WeatherInfo, WeatherCallBack<WeatherInfo>> = this
 
+            override fun execute(callback: WeatherCallBack<WeatherInfo>): Job {
+                callback.onFail(UnknownException())
+                return Job()
+            }
+
             override fun invoke(callback: WeatherCallBack<WeatherInfo>): Job {
-                callback.onDefaultFail(UnknownException())
+                callback.onFail(UnknownException())
                 return Job()
             }
         }
@@ -90,29 +99,16 @@ class WeatherViewModelTest {
     }
 
     @Test
-    fun shouldTriggerTechnicalFailWhenUseCaseReturnTechnicalFail() {
-        var mockObserver = mockObserver<Throwable>()
-        weatherUseCase = object : WeatherUseCase {
-            override fun buildUseCase(param: WeatherRequest):
-                    BaseUseCase<WeatherRequest, WeatherInfo, WeatherCallBack<WeatherInfo>> = this
-
-            override fun invoke(callback: WeatherCallBack<WeatherInfo>): Job {
-                callback.onFailByTechnical(TechnicalException())
-                return Job()
-            }
-        }
-        viewModel = WeatherViewModel(weatherUseCase, envConfiguration);
-        viewModel.failedByTechnical.observe(mockLifecycleOwner(), mockObserver)
-        viewModel.loadWeather("cali")
-        verify(mockObserver).onChanged(ArgumentMatchers.isA(TechnicalException::class.java))
-    }
-
-    @Test
     fun shouldTriggerBusinessFailWhenUseCaseReturnBusinessFail() {
         var mockObserver = mockObserver<Throwable>()
         weatherUseCase = object : WeatherUseCase {
             override fun buildUseCase(param: WeatherRequest):
                     BaseUseCase<WeatherRequest, WeatherInfo, WeatherCallBack<WeatherInfo>> = this
+
+            override fun execute(callback: WeatherCallBack<WeatherInfo>): Job {
+                callback.onCityNotFound(BusinessException())
+                return Job()
+            }
 
             override fun invoke(callback: WeatherCallBack<WeatherInfo>): Job {
                 callback.onCityNotFound(BusinessException())

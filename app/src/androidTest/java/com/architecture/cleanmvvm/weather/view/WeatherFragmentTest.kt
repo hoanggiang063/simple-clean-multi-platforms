@@ -12,10 +12,10 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.architecture.business.core.exception.BusinessException
 import com.architecture.business.core.exception.TechnicalException
 import com.architecture.business.core.exception.UnknownException
+import com.architecture.business.weather.info.WeatherInfo
+import com.architecture.business.weather.info.WeatherItemInfo
 import com.architecture.cleanmvvm.R
 import com.architecture.cleanmvvm.bootstrap.createRule
-import com.architecture.cleanmvvm.node1.demo.info.WeatherInfo
-import com.architecture.cleanmvvm.node1.demo.info.WeatherItemInfo
 import com.architecture.cleanmvvm.weather.util.ToastMatcher
 import com.architecture.cleanmvvm.weather.viewmodel.WeatherViewModel
 import io.mockk.MockKAnnotations

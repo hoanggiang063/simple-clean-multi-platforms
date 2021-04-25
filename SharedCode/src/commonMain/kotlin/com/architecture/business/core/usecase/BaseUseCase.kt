@@ -5,7 +5,7 @@ import kotlinx.coroutines.Job
 
 interface BaseUseCase<Param, Result, CallBack : BasePresentCallBack<Result>> {
 
-    fun buildUseCase(param: Param): BaseUsecaseImpl<Param, Result, CallBack>
+    fun buildUseCase(param: Param): BaseUseCase<Param, Result, CallBack>
 
     operator fun invoke(callback: CallBack): Job
 
