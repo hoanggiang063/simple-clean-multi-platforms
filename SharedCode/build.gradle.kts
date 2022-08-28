@@ -32,7 +32,7 @@ kotlin {
         implementation ("io.ktor:ktor-client-json:1.5.3")
         implementation ("io.ktor:ktor-client-serialization:1.5.3")
         // Date & Time
-        implementation ("com.soywiz:klock-metadata:1.4.0")
+       // implementation ("com.soywiz:klock-metadata:1.4.0")
 
     }
 
