@@ -3,3 +3,12 @@
 
 # Kotlin Multiplafrorm projects: Sharing code between iOS and Android
 
+Run in Android emulator :
+Open Project with Android studio, then type below command in terminal:
+./gradlew installSitDebug
+
+Run in iOS emulator :
+Open project (clean-multi-platforms/native) by Xcode
+In Android studio, then type below command in terminal:
+./gradlew packForXcode
+In Xcode, select simulator and build.
